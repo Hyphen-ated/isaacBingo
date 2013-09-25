@@ -1,0 +1,45 @@
+#bingo {
+  border:3px #aaa solid;
+}
+
+#bingo tr td { 
+  cursor:pointer;
+  width:120px;
+  height:120px;
+  text-align:center;
+  border:1px #666 solid;
+  background: #FFFFFF;
+ -moz-user-select     : none;
+ -khtml-user-select   : none;
+ -webkit-user-select  : none;
+ -o-user-select       : none;
+ user-select          : none;
+}
+#bingo tr td { background:#E9E9E9; }
+#bingo tr td.hard { background:#FFF4F4; }
+#bingo tr td.medium { background:#FFFFF4; }
+#bingo tr td.easy { background:#F4FFF4; }
+
+#bingo tr td.greensquare { background:#75E075; }
+#bingo tr td.redsquare { background:#E08566; }
+
+#board {
+  float:center;
+  width:700px;
+  margin: 0px auto;
+}
+
+#explanation {
+  float: center;
+  width: 700px;
+}
+
+#bingo td {
+  width:93px;
+  height:73px;
+  text-align:center;
+  border:1px #666 solid;
+  background: #000;
+}
+
+
