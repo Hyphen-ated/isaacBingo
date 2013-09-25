@@ -1,5 +1,4 @@
 hardGoals = [
-"Full Clear XL Floor Past Basement|fullClearXL",
 "Full Clear Sheol|fullClearSheol",
 "Full Clear Cathedral|fullClearCath",
 "Fart on Satan|fartOnSatan",
@@ -17,7 +16,7 @@ hardGoals = [
 ];
 
 mediumGoals = [
-
+"Full Clear XL Floor Past Basement|fullClearXL",
 "Permanent Flight|permaFlight",
 "100 Combined Bombs/Keys/Coins|100combinedThings",
 "Permanent Map Item|permaMap",
@@ -42,7 +41,8 @@ mediumGoals = [
 "Skatole|skatole",
 "Kill a Super or Ultra Sin Miniboss|specialSin",
 "Cut Something|cutSomething",
-"Kill a Boss With Only Orbitals|bossOrbitals",
+"Kill a Boss Without Shooting or Space Items or Bombs|bossOrbitals",
+"Gold Key|goldKey",
 ]
 
 easyGoals = [
@@ -52,7 +52,7 @@ easyGoals = [
 "Poison an Enemy|poison",
 "Any Form of Flight|fly",
 "Satisfy a Slot Machine|satisfySlot",
-"Beat an Asteroid Boss or Mini Boss|asteroidBoss",
+"Beat a Full Asteroid Boss or Mini Boss|asteroidBoss",
 "Item From an Angel Room|angelRoom",
 "Suit Card|suitCard",
 "Kill a Gurdy (Jr or Sr)|gurdy",
@@ -64,7 +64,6 @@ easyGoals = [
 "Kill a Green Champion Mob or Boss|greenChamp",
 "Satisfy a Sacrifice Room|satisfySacRoom",
 "Teleport Out of a Boss Fight|teleportBoss",
-"Gold Key|goldKey",
 "Any Mushroom|mushroom",
 "Syringe Item|syringe",
 "Fire a Homing Tear|homing",
