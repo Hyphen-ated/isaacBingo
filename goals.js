@@ -8,7 +8,6 @@ hardGoals = [
 "Beat Heart Without Getting an Item from a Treasure Room|beatHeartNoTreasure",
 "Beat Heart Without Ever Opening a Chest|killHeartNoChest",
 "Beat Heart Without Ever Using a Bomb|killHeartNoBombs",
-"Beat Heart Without Ever Using a Space Item|killHeartNoSpace",
 "Beat Heart Without Ever Gaining Red Heart Containers|heartNoContainers",
 "Pee on Isaac|peeIsaac",
 "No-Hit Womb 2|noHitWomb2",
@@ -25,7 +24,6 @@ mediumGoals = [
 "3 Devil Deals|3devilDeals",
 "Clear a Boss Challenge Room|bossChallengeRoom",
 "Enter 3 Super Secret Rooms|3superSecret",
-"Bomb a Demon Beggar|bombDemonBeggar",
 "Destroy a Golden Poop|destroyGoldPoop",
 "Permanent 6 Damage Bars|maxDamageBars",
 "Max Tears Up Bars|maxTearsBars",
@@ -42,11 +40,12 @@ mediumGoals = [
 "Cut Something|cutSomething",
 "Kill a Boss Without Shooting or Space Items or Bombs|bossOrbitals",
 "Gold Key|goldKey",
+"Beat Heart Without Ever Using a Space Item|killHeartNoSpace",
 ]
 
 easyGoals = [
 "Eyeball Item|eyeball",
-"Severed Head Item|head",
+"Item With \"Head\" In The Name|head",
 "15 Separate Coins On Floor in One Room|15coins",
 "Poison an Enemy|poison",
 "Any Form of Flight|fly",
@@ -66,6 +65,7 @@ easyGoals = [
 "Any Mushroom|mushroom",
 "Syringe Item|syringe",
 "Fire a Homing Tear|homing",
+"Bomb a Demon Beggar|bombDemonBeggar",
 ]
 
 
@@ -73,6 +73,7 @@ var exclusions = [
 ["fartOnSatan", "poison"],
 ["permaFlight", "fly"],
 ["fullClearSheol", "noShopSheol"],
-["killHeartNoChest","killHeartNoBombs","killHeartNoSpace","heartNoContainers"],
+["killHeartNoChest","killHeartNoBombs","heartNoContainers"],
 ["meatSphere", "2shootingFollowers"],
+["100combinedThings", "55coins"],
 ];
