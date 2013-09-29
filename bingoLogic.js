@@ -4,19 +4,51 @@ $(function() { bingo.bingo(goals); });
 
 goals = [];
 bingo.bingo = function (goals) {
-  var checkbox = document.getElementById('showDifficulty');
-  checkbox.onchange = function() {
+  var difficultyCheckbox = document.getElementById('showDifficulty');
+  difficultyCheckbox.onchange = function() {
     if(this.checked) {
       bingo.addAllDifficultyClasses();
     } else {
       bingo.removeAllDifficultyClasses();
     }
   }
-
+ 
   var seed = gup('seed');
-  if (seed == "") {
-    window.location = '?seed=' + Math.ceil(1000*1000*1000 * Math.random()).toString(36);
+  var newSeed = gup('newseed');
+  //todo: clean up this crap. the point is we want to be able to check the checkbox and that puts
+  //"allowSimilar=true" into the url.
+  var allowSimilar = gup('allowSimilar');
+
+  var shouldWeAllowSimilar = allowSimilar.toLowerCase() == "true";
+
+  var generateLink = document.getElementById("generateLink");
+  var similarityCheckbox = document.getElementById('allowSimilar');
+  similarityCheckbox.onchange = function() {
+    if(this.checked) {
+      generateLink.href = "?allowSimilar=true&newseed=true";
+    } else {
+      generateLink.href = "?newseed=true";
+    }
+  }
+
+  if (shouldWeAllowSimilar) {
+    similarityCheckbox.checked = true;
+    generateLink.href = "?allowSimilar=true&newseed=true";
+  }
+
+  if (seed == "" || newSeed != "") {
+    var similarParam = "";
+    if(shouldWeAllowSimilar) {
+      similarParam = 'allowSimilar=true&';
+    }
+    window.location = '?' + similarParam + 'seed=' + Math.ceil(1000*1000*1000 * Math.random()).toString(36);
     return;
+  }
+
+  var useExclusions = true;
+  if(allowSimilar.toLowerCase() == "true") {
+    useExclusions = false;
+    similarityCheckbox.checked = true;
   }
 
   seed = seed.toLowerCase();
@@ -32,10 +64,12 @@ bingo.bingo = function (goals) {
   readGoals("medium", mediumGoals);
   readGoals("easy", easyGoals);
 
-  //compute the exclusions of the goals
-  makeExclusions(goals["hard"]);
-  makeExclusions(goals["medium"]);
-  makeExclusions(goals["easy"]);
+  if(useExclusions == true) {
+    //compute the exclusions of the goals
+    makeExclusions(goals["hard"]);
+    makeExclusions(goals["medium"]);
+    makeExclusions(goals["easy"]);
+  }
 
   var bingoBoard = [];
   var invalidNames = [];
