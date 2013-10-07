@@ -35,7 +35,7 @@ mediumGoals = [
 "6 Speed Bars|6speedBars",
 "Shoot a Beam|beam",
 "Satisfy a Normal Beggar|satisfyBeggar",
-"7 Max Health (Red Hearts)|7redHearts",
+"7 Red Heart Containers|7redHearts",
 "12 Total Health (Red or Blue Hearts)|12health",
 "Satisfy a Blood Bank|satisfyBank",
 "2 Guppy Items|2guppy",
