@@ -12,44 +12,52 @@ bingo.bingo = function (goals) {
       bingo.removeAllDifficultyClasses();
     }
   }
- 
+
   var seed = gup('seed');
   var newSeed = gup('newseed');
+
+
   //todo: clean up this crap. the point is we want to be able to check the checkbox and that puts
   //"allowSimilar=true" into the url.
   var allowSimilar = gup('allowSimilar');
+  var useDifficultyPattern = gup('randomDifficultyPattern');
 
-  var shouldWeAllowSimilar = allowSimilar.toLowerCase() == "true";
+  var shouldAllowSimilar = allowSimilar.toLowerCase() == "true";
+  var shouldRandomDifficultyPattern = useDifficultyPattern.toLowerCase() == "true";
 
   var generateLink = document.getElementById("generateLink");
   var similarityCheckbox = document.getElementById('allowSimilar');
-  similarityCheckbox.onchange = function() {
-    if(this.checked) {
-      generateLink.href = "?allowSimilar=true&newseed=true";
-    } else {
-      generateLink.href = "?newseed=true";
-    }
-  }
+  var difficultyPatternCheckbox = document.getElementById('randomDifficultyPattern');
 
-  if (shouldWeAllowSimilar) {
+  if (shouldAllowSimilar) {
     similarityCheckbox.checked = true;
-    generateLink.href = "?allowSimilar=true&newseed=true";
   }
 
-  if (seed == "" || newSeed != "") {
-    var similarParam = "";
-    if(shouldWeAllowSimilar) {
-      similarParam = 'allowSimilar=true&';
+  if(shouldRandomDifficultyPattern) {
+    difficultyPatternCheckbox.checked = true;
+  }
+
+  if (seed == "" ) {
+    var symbol;
+    if(window.location.href.indexOf('?') == -1) {
+      symbol = '?';
+    } else {
+      symbol = '&';
     }
-    window.location = '?' + similarParam + 'seed=' + Math.ceil(1000*1000*1000 * Math.random()).toString(36);
+
+    window.location += symbol + 'seed=' + Math.ceil(1000*1000*1000 * Math.random()).toString(36);
     return;
   }
 
-  var useExclusions = true;
-  if(allowSimilar.toLowerCase() == "true") {
-    useExclusions = false;
-    similarityCheckbox.checked = true;
-  }
+  $('#generateLink').click(function(){
+    var link = "?";
+    if (similarityCheckbox.checked == true)
+      link = link + '&allowSimilar=true';
+    if (difficultyPatternCheckbox.checked == true)
+      link = link + '&randomDifficultyPattern=true';
+    generateLink.href = link;
+  });
+
 
   seed = seed.toLowerCase();
   Math.seedrandom(seed); //sets up the RNG
@@ -64,7 +72,7 @@ bingo.bingo = function (goals) {
   readGoals("medium", mediumGoals);
   readGoals("easy", easyGoals);
 
-  if(useExclusions == true) {
+  if(!shouldAllowSimilar) {
     //compute the exclusions of the goals
     makeExclusions(goals["hard"]);
     makeExclusions(goals["medium"]);
