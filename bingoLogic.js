@@ -3,6 +3,7 @@ $(function() { bingo.bingo(goals); });
 
 
 goals = [];
+bingoBoard = [];
 bingo.bingo = function (goals) {
   var difficultyCheckbox = document.getElementById('showDifficulty');
   difficultyCheckbox.onchange = function() {
@@ -16,26 +17,17 @@ bingo.bingo = function (goals) {
   var seed = gup('seed');
   var newSeed = gup('newseed');
 
-
-  //todo: clean up this crap. the point is we want to be able to check the checkbox and that puts
-  //"allowSimilar=true" into the url.
   var allowSimilar = gup('allowSimilar');
   var useDifficultyPattern = gup('randomDifficultyPattern');
+  var showDifficulty = gup('showDifficulty');
 
   var shouldAllowSimilar = allowSimilar.toLowerCase() == "true";
   var shouldRandomDifficultyPattern = useDifficultyPattern.toLowerCase() == "true";
+  var shouldShowDifficulty = showDifficulty.toLowerCase() == "true";
 
   var generateLink = document.getElementById("generateLink");
   var similarityCheckbox = document.getElementById('allowSimilar');
   var difficultyPatternCheckbox = document.getElementById('randomDifficultyPattern');
-
-  if (shouldAllowSimilar) {
-    similarityCheckbox.checked = true;
-  }
-
-  if(shouldRandomDifficultyPattern) {
-    difficultyPatternCheckbox.checked = true;
-  }
 
   if (seed == "" ) {
     var symbol;
@@ -52,9 +44,11 @@ bingo.bingo = function (goals) {
   $('#generateLink').click(function(){
     var link = "?";
     if (similarityCheckbox.checked == true)
-      link = link + '&allowSimilar=true';
+      link += '&allowSimilar=true';
     if (difficultyPatternCheckbox.checked == true)
-      link = link + '&randomDifficultyPattern=true';
+      link += '&randomDifficultyPattern=true';
+    if(difficultyCheckbox.checked == true)
+      link += '&showDifficulty=true';
     generateLink.href = link;
   });
 
@@ -79,16 +73,39 @@ bingo.bingo = function (goals) {
     makeExclusions(goals["easy"]);
   }
 
-  var bingoBoard = [];
+  bingoBoard = [];
   var invalidNames = [];
-  addGoals(bingoBoard, goals["hard"], this.hardPositions, invalidNames);
-  addGoals(bingoBoard, goals["medium"], this.mediumPositions, invalidNames);
-  addGoals(bingoBoard, goals["easy"], this.easyPositions, invalidNames);
+
+  if(shouldRandomDifficultyPattern) {
+    allGoals = goals["hard"].concat(goals["medium"], goals["easy"]);
+    allPositions = this.hardPositions.concat(this.mediumPositions, this.easyPositions);
+    addGoals(bingoBoard, allGoals, allPositions, invalidNames);
+  } else {
+    addGoals(bingoBoard, goals["hard"], this.hardPositions, invalidNames);
+    addGoals(bingoBoard, goals["medium"], this.mediumPositions, invalidNames);
+    addGoals(bingoBoard, goals["easy"], this.easyPositions, invalidNames);
+  }
 
   //populate the actual table on the page
   for (var i=0; i<25; i++) {
     $('#slot'+i).append(bingoBoard[i].label);
   }
+  
+  //check the boxes based on url params
+  if (shouldAllowSimilar) {
+    similarityCheckbox.checked = true;
+  }
+
+  if(shouldRandomDifficultyPattern) {
+    difficultyPatternCheckbox.checked = true;
+  }
+  
+  if(shouldShowDifficulty) {
+    difficultyCheckbox.checked = true;
+    this.addAllDifficultyClasses();
+  }
+
+
 
   function addGoals(board, goals, positions, invalidNames) {
 
@@ -98,7 +115,7 @@ bingo.bingo = function (goals) {
       var candidates = buildCandidates(goals, invalidNames);
       var newGoalIdx = Math.floor((Math.random() * candidates.length));
       var newGoal = candidates[newGoalIdx];
-      board[position] = {label: newGoal.label};
+      board[position] = {label: newGoal.label, difficulty: newGoal.difficulty};
       invalidNames.push(newGoal.name);
       if(typeof newGoal.exclusions != 'undefined') {
         var excl = newGoal.exclusions;
@@ -152,6 +169,7 @@ bingo.bingo = function (goals) {
       var goal = {};
       goal.label = parts[0];
       goal.name = parts[1];
+      goal.difficulty = difficulty;
       goals[difficulty].push(goal);
     }
   }
@@ -182,15 +200,18 @@ bingo.bingo = function (goals) {
     }
 
   );
-  
+
 
 
 } // bingo.bingo
 
 bingo.addAllDifficultyClasses = function () {
-    this.addDifficultyClasses("hard",this.hardPositions);
-    this.addDifficultyClasses("medium",this.mediumPositions);
-    this.addDifficultyClasses("easy",this.easyPositions);
+    for (var i=0; i<25; i++) {
+      $('#slot'+i).addClass(bingoBoard[i].difficulty);
+    }
+    //this.addDifficultyClasses("hard",this.hardPositions);
+    //this.addDifficultyClasses("medium",this.mediumPositions);
+    //this.addDifficultyClasses("easy",this.easyPositions);
   }
   
 bingo.removeAllDifficultyClasses = function () {
