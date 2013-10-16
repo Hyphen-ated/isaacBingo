@@ -15,6 +15,7 @@ hardGoals = [
 "Full Clear Cathedral|fullClearCath",
 "No-Hit Womb 2 or XL|noHitWomb2",
 "Full Clear and No-Hit Caves 1 and 2 or XL|noHitCaves",
+"2 Items With "Mom" in the Name|momItems",
 ];
 
 mediumGoals = [
