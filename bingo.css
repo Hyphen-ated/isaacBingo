@@ -27,16 +27,31 @@
 
 #bingo{font-size:14pt;}
 
-#board {
+#stuff {
   float:center;
   width:700px;
   margin: 0px auto;
+}
+
+#board {
+  border-radius: 15px;
+  background:#F3F3F0;
+  padding: 10px;
 }
 
 #explanation {
   float: center;
   width: 700px;
 }
+
+#generation {
+  border-radius: 15px;
+  background:#F3F3F0;
+  padding: 10px;
+  border: 3px;
+  margin: 15px;
+}
+
 
 
 
