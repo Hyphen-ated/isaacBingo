@@ -28,6 +28,7 @@ bingo.bingo = function (goals) {
   var generateLink = document.getElementById("generateLink");
   var similarityCheckbox = document.getElementById('allowSimilar');
   var difficultyPatternCheckbox = document.getElementById('randomDifficultyPattern');
+  var tipText = document.getElementById("tipText");
 
   if (seed == "" ) {
     var symbol;
@@ -89,6 +90,10 @@ bingo.bingo = function (goals) {
   //populate the actual table on the page
   for (var i=0; i<25; i++) {
     $('#slot'+i).append(bingoBoard[i].label);
+	$('#slot'+i)[0].setAttribute("title", bingoBoard[i].tip);
+	$('#slot'+i).mouseover(function() {
+	  tipText.innerHTML=this.title;
+	});
   }
   
   //check the boxes based on url params
@@ -115,7 +120,7 @@ bingo.bingo = function (goals) {
       var candidates = buildCandidates(goals, invalidNames);
       var newGoalIdx = Math.floor((Math.random() * candidates.length));
       var newGoal = candidates[newGoalIdx];
-      board[position] = {label: newGoal.label, difficulty: newGoal.difficulty};
+      board[position] = {label: newGoal.label, difficulty: newGoal.difficulty, tip: newGoal.tip};
       invalidNames.push(newGoal.name);
       if(typeof newGoal.exclusions != 'undefined') {
         var excl = newGoal.exclusions;
@@ -169,6 +174,10 @@ bingo.bingo = function (goals) {
       var goal = {};
       goal.label = parts[0];
       goal.name = parts[1];
+	  goal.tip = parts[2];
+	  if(goal.tip == null) {
+	    goal.tip = "";
+      }
       goal.difficulty = difficulty;
       goals[difficulty].push(goal);
     }
