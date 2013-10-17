@@ -1,0 +1,71 @@
+#bingo {
+  border:3px #aaa solid;
+}
+
+#bingo tr td { 
+  cursor:pointer;
+  width:120px;
+  height:120px;
+  text-align:center;
+  border:1px #666 solid;
+  background: #FFFFFF;
+
+ -moz-user-select     : none;
+ -khtml-user-select   : none;
+ -webkit-user-select  : none;
+ -o-user-select       : none;
+ user-select          : none;
+}
+#bingo tr td { background:#E1E1E1; }
+
+#tip  { 
+  background: #E1E1E1;
+  border-radius: 5px;
+  padding: 2px;
+  margin-top: 10px;
+  border: 10px;
+  height: 50px;
+}
+
+#tipText {
+  margin: 3px;
+}
+
+#bingo tr td.hard { background:#FFE9E9; }
+#bingo tr td.medium { background:#FFFFE9; }
+#bingo tr td.easy { background:#F2F2FF; }
+
+#bingo tr td.greensquare { background:#75E075; }
+#bingo tr td.redsquare { background:#E08566; }
+
+
+#bingo{font-size:14pt;}
+
+#stuff {
+  float:center;
+  width:700px;
+  margin: 0px auto;
+}
+
+#board {
+  border-radius: 15px;
+  background:#F3F3F0;
+  padding: 10px;
+}
+
+#explanation {
+  float: center;
+  width: 700px;
+}
+
+#generation {
+  border-radius: 15px;
+  background:#F3F3F0;
+  padding: 10px;
+  border: 3px;
+  margin: 15px;
+}
+
+
+
+
