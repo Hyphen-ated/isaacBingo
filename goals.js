@@ -6,7 +6,7 @@ easyGoals = [
 "Any Form of Flight|fly|Hanged Man Card, Ponies, Bible, Shears, or Permanent Flight items",
 "Satisfy a Slot Machine|satisfySlot|Destroy a slot machine by giving pennies",
 "Beat a Full Fistula, Teratoma, or Envy|asteroidBoss",
-"Item From an Angel Room|angelRoom",
+"Item From an Angel Room|angelRoom|An angel room item from some other source doesn't count",
 "Suit Card|suitCard|2 of some suit or Ace of Spades",
 "Kill a Gurdy (Jr or Sr)|gurdy",
 "Bomb a Normal Beggar|bombBeggar",
@@ -24,6 +24,7 @@ easyGoals = [
 "2 Items With \"Mom\" in the Name|momItems",
 "Read a Book|readABook|(not a sports page, not a magazine)",
 "3 different pills|3pills|Must be on a single run",
+"Multishot|multishot|Quad Shot, Triple Shot, Tammy's Head, Loki's Horns, Mom's Eye, Harlequin Baby, Rainbow Baby",
 ]
 
 mediumGoals = [
