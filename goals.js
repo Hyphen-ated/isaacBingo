@@ -19,7 +19,7 @@ easyGoals = [
 "Teleport Out of a Boss Fight|teleportBoss",
 "Any Mushroom|mushroom",
 "Syringe Item|syringe",
-"Fire a Homing Tear|homing|Followers' homing tears count",
+"Fire a Homing Shot|homing|Followers' homing shots count",
 "Bomb a Demon Beggar|bombDemonBeggar",
 "2 Items With \"Mom\" in the Name|momItems",
 "Read a Book|readABook|(not a sports page, not a magazine)",
