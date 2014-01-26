@@ -19,7 +19,7 @@ easyGoals = [
 "Teleport Out of a Boss Fight|teleportBoss",
 "Any Mushroom|mushroom",
 "Syringe Item|syringe",
-"Fire a Homing Shot|homing|Followers' homing shots count",
+"Fire a Homing Shot|homing|Followers' homing shots count. Knife can home",
 "Bomb a Demon Beggar|bombDemonBeggar",
 "2 Items With \"Mom\" in the Name|momItems",
 "Read a Book|readABook|(not a sports page, not a magazine)",
@@ -74,8 +74,8 @@ hardGoals = [
 "Beat Isaac Without Shopping|isaacNoShop|From Basement to Isaac",
 "Damage Isaac With Pee or Holy Water|peeIsaac|Isaac the boss, not Isaac the player character",
 "Full Clear Cathedral|fullClearCath|All normal rooms and the boss",
-"No Damage on Womb 2 or XL|noHitWomb2|Health can't go down for any reason",
-"Full Clear and No Damage Caves 1 and 2 or XL|noHitCaves|All normal rooms and the boss. Health can't go down for any reason",
+"No Damage on Womb 2 or XL|noHitWomb2|Health can't go down for any reason. Forget me now gives a second chance",
+"Full Clear and No Damage Caves 1 and 2 or XL|noHitCaves|All normal rooms and the boss. Health can't go down for any reason. Forget me now gives a second chance",
 ];
 
 
